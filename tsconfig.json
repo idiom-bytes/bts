@@ -9,7 +9,7 @@
         "strictFunctionTypes": true,
         "noEmit": true,
         "allowSyntheticDefaultImports": false,
-        "baseUrl": ".",
+        "baseUrl": "./src",
         "paths": {
             "web3": ["."]
         }
