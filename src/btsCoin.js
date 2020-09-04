@@ -1,5 +1,5 @@
-import infura from './infura.js';
-import axios from 'axios';
+const infura = require('./infura.js');
+const axios = require('axios');
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || 'your_api_key';
 const PRICE_DECIMALS = 10;
@@ -73,4 +73,4 @@ class BTSCoin {
     }
 }
 
-export {BTSCoin, PRICE_DECIMALS};
+module.exports = {BTSCoin, PRICE_DECIMALS};

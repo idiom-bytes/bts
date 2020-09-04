@@ -1,5 +1,5 @@
-import {BTSCoin, PRICE_DECIMALS} from './btsCoin.js';
-import moment from 'moment';
+const {BTSCoin, PRICE_DECIMALS} = require('./btsCoin.js');
+const moment = require('moment');
 
 class Tob extends BTSCoin {
     async updateSupply() {
@@ -63,4 +63,4 @@ class Tob extends BTSCoin {
     }
 }
 
-export default Tob;
+module.exports = Tob;

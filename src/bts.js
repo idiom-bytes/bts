@@ -1,6 +1,6 @@
-import Xamp from './xamp.js';
-import Tob from './tob.js';
-import Boa from './boa.js';
+const Xamp = require('./xamp.js');
+const Tob = require('./tob.js');
+const Boa = require('./boa.js');
 
 const params = {
     xamp: {
@@ -53,4 +53,4 @@ class BTS {
     }
 }
 
-export default BTS;
+module.exports = BTS;

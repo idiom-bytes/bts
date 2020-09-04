@@ -1,4 +1,4 @@
-import {BTSCoin} from './btsCoin.js';
+const {BTSCoin} = require('./btsCoin.js');
 
 class Boa extends BTSCoin {
     async updateSupply() {
@@ -38,4 +38,4 @@ class Boa extends BTSCoin {
     }
 }
 
-export default Boa;
+module.exports = Boa;

@@ -1,5 +1,5 @@
-import {BTSCoin, PRICE_DECIMALS} from './btsCoin.js';
-import moment from 'moment';
+const {BTSCoin, PRICE_DECIMALS} = require('./btsCoin.js');
+const moment = require('moment');
 
 class Xamp extends BTSCoin {
     async updateSupply() {
@@ -64,4 +64,4 @@ class Xamp extends BTSCoin {
     }
 }
 
-export default Xamp;
+module.exports = Xamp;
