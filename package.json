@@ -1,0 +1,19 @@
+{
+  "name": "bts_js",
+  "version": "1.0.0",
+  "description": "BTS wrapper",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "moment": "^2.27.0",
+    "web3": "^1.2.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Idiom",
+  "license": "ISC"
+}
