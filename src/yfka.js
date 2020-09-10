@@ -6,7 +6,6 @@ class Yfka extends BTSCoin {
         await super.updateSupply();
 
         // SUPPLY CURRENT
-        // this.supplyCurrent["vested"] = obj => Object.values(this.supplyCurrent).filter(this.filterDefaultsupplyAddresses).select(value => {'vested' in value}).reduce((a, b) => a + b);
         this.supplyCurrent["burn"] = this.supplyCurrent["burn"];
         this.supplyCurrent["circulating"] = this.supplyCurrent["total"] - this.supplyCurrent["burn"];
     }
