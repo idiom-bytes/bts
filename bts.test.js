@@ -101,3 +101,16 @@ test('BOA rebase[params]', async () => {
     _contract.IsProfitable(): ${bts.boa.contractData["isProfitable"]}
     _contract.CanRebase(): ${bts.boa.contractData["canRebase"]}`);
 });
+
+test('YFKA supply[params]', async () => {
+    await bts.yfka.update();
+    expect(bts.yfka.supplyCurrent["total"]).toBeDefined();
+    expect(bts.yfka.supplyCurrent["burn"]).toBeDefined();
+    expect(bts.yfka.supplyCurrent["circulating"]).toBeDefined();
+
+    console.log(`\nBOA SUPPLY
+    ----------------
+    Total Supply: ${bts.yfka.supplyCurrent["total"].toFixed(2)}
+    Burn Supply: ${bts.yfka.supplyCurrent["burn"].toFixed(2)} (${((bts.yfka.supplyCurrent["burn"] / bts.yfka.supplyCurrent["total"]) * 100).toFixed(2)}%)
+    Circulating Supply: ${bts.yfka.supplyCurrent["circulating"].toFixed(2)} (${((bts.yfka.supplyCurrent["circulating"] / bts.yfka.supplyCurrent["total"]) * 100).toFixed(2)}%)`);
+});

@@ -1,4 +1,4 @@
-const infura = require('./infura.js');
+const web3 = require('./web3');
 const axios = require('axios');
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || 'your_api_key';
@@ -11,9 +11,9 @@ class BTSCoin {
         this.contractDecimals = params.decimals;
 
         // REBASE CONTRACT
-        this.rebase0x = params.rebaseAddress;
-        this.rebaseAbi = params.rebaseAbi;
-        this.rebaseWeb3 = new infura.eth.Contract(this.rebaseAbi, this.rebase0x);
+        this.rebase0x = params.rebaseAddress || null;
+        this.rebaseAbi = params.rebaseAbi || null;
+        this.rebaseWeb3 = this.rebase0x === null ? null : new web3.eth.Contract(this.rebaseAbi, this.rebase0x);
 
         // TOKEN SUPPLY ADDRESSES
         // Important Keys: total, burn, vested, circulating, taxPool
@@ -26,7 +26,7 @@ class BTSCoin {
     }
 
     filterDefaultAddresses(key) {
-        return ["total","burn"].includes(key) === false;
+        return ["contract","total","burn"].includes(key) === false;
     }
 
     async updateSupply() {

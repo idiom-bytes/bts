@@ -1,4 +1,4 @@
-const {BTSCoin, PRICE_DECIMALS} = require('./btsCoin.js');
+const {BTSCoin, PRICE_DECIMALS} = require('./btsCoin');
 const moment = require('moment');
 
 class Tob extends BTSCoin {
@@ -22,7 +22,7 @@ class Tob extends BTSCoin {
         // Is Time.Now() > contract.lastRebaseDate() + contract.hoursBetweenRebases() Then contract.canRebase()
         await this.rebaseWeb3.methods.currentExchangeRate().call()
             .then(res => {
-                this.contractData["currentExchangeRate"] = res / Math.pow(10, PRICE_DECIMALS);
+                    this.contractData["currentExchangeRate"] = res / Math.pow(10, PRICE_DECIMALS);
             })
             .catch(error => {
                 console.error(`tob.currentExchangeRate:`, error);
@@ -61,6 +61,20 @@ class Tob extends BTSCoin {
         this.contractData["canBurn"] = this.contractData["currentExchangeRate"] > this.contractData["lastExchangeRate"];
         this.contractData["canRebase"] = (new Date().getTime() > this.contractData["nextRebaseDate"]) || this.contractData["canBurn"];
     }
+
+    listenToRebaseSuccess(fromBlockNumber, rebaseSuccessListener) {
+        console.log('listening for RebaseSuccess');
+        this.rebaseWeb3.events.RebaseSuccess({
+            fromBlock: (fromBlockNumber || 0),
+        }, rebaseSuccessListener)
+    };
+
+    listenToRebaseFail(fromBlockNumber, rebaseFailListener) {
+        console.log('listening for RebaseFail');
+        this.rebaseWeb3.events.RebaseFail({
+            fromBlock: (fromBlockNumber || 0),
+        }, rebaseFailListener)
+    };
 }
 
 module.exports = Tob;

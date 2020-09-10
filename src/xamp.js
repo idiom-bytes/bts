@@ -1,6 +1,8 @@
-const {BTSCoin, PRICE_DECIMALS} = require('./btsCoin.js');
+const {BTSCoin, PRICE_DECIMALS} = require('./btsCoin');
+const web3 = require('./web3');
 const moment = require('moment');
 
+// TODO - Share common functionality between XAMP+TOB
 class Xamp extends BTSCoin {
     async updateSupply() {
         await super.updateSupply();

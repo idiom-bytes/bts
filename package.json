@@ -2,7 +2,7 @@
   "name": "bts_js",
   "version": "1.0.0",
   "description": "BTS wrapper",
-  "main": "index.js",
+  "private": true,
   "dependencies": {
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
@@ -10,9 +10,12 @@
     "web3": "^1.2.11"
   },
   "devDependencies": {
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "scripts": {
+    "start": "webpack-dev-server --mode development",
     "test": "jest --verbose"
   },
   "author": "Idiom",
